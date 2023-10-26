@@ -8,5 +8,3 @@ COPY ./emit.c start.sh /app/
 WORKDIR /app
 
 RUN gcc emit.c -o emit
-
-ENTRYPOINT ["./start.sh"]

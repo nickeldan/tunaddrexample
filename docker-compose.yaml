@@ -4,6 +4,7 @@ services:
     app1:
         image: my_image
         build: ./app1
+        entrypoint: ["./start.sh"]
         init: true
         networks:
             - my_network
