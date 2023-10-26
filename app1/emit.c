@@ -60,7 +60,7 @@ recompute_checksum(unsigned char *packet)
 
         checksum += num;
         while (checksum > 0xffff) {
-            checksum = (checksum & 0xffff) | (checksum >> 16);
+            checksum = (checksum & 0xffff) + (checksum >> 16);
         }
     }
 
