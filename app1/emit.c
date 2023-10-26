@@ -5,6 +5,7 @@
 #include <net/if.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -172,6 +173,8 @@ main()
         sleep(1);
         printf("Emitting packet\n");
     } while (write(tun_fd, packet, sizeof(packet)) > 0);
+
+    kill(getppid(), SIGKILL);
 
 done:
     close(tun_fd);
