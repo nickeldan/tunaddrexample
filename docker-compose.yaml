@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+    app1:
+        image: my_image
+        build: ./app1
+        init: true
+        networks:
+            - my_network
+        devices:
+            - /dev/net/tun:/dev/net/tun
+        cap_add:
+            - NET_ADMIN
+        sysctls:
+            - net.ipv4.ip_forward=1
+        volumes:
+            - ./output:/app/output
+
+    app2:
+        image: ubuntu:22.04
+        entrypoint: ["sleep", "infinity"]
+        init: true
+        networks:
+            - my_network
+
+networks:
+    my_network:
